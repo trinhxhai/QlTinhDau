@@ -44,6 +44,7 @@ namespace QL_ban_tinh_dau
         {
             load_hoadon();
             loadCombobox();
+            isThemHoaDon = true;
         }
         void load_hoadon()
         {
@@ -128,8 +129,9 @@ namespace QL_ban_tinh_dau
         private void lwHoadon_SelectedIndexChanged(object sender, EventArgs e)
         {
             
+            
             //hoaDonId = e.Item.Text;
-            isThemHoaDon = false;
+            
 
             foreach (ListViewItem item in lwHoadon.SelectedItems)
             {
@@ -181,8 +183,11 @@ namespace QL_ban_tinh_dau
             if (ChiTietHoaDonForm.ClosedCode == 1)
             {
                 MessageBox.Show("Thêm thành công");
-                load_to_CTHD();
-                lwCTHD.Refresh();
+
+                load_hoadon();
+                lwHoadon.Refresh();
+                //load_to_CTHD();
+                //lwCTHD.Refresh();
 
             }
             else if (ChiTietHoaDonForm.ClosedCode == 2) {
@@ -267,6 +272,8 @@ namespace QL_ban_tinh_dau
         private void lwHoadon_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
         {
             //e.Item.Text; // 
+
+            isThemHoaDon = !e.IsSelected;
             selectedHoaDonId = int.Parse(e.Item.Text);
             button1.Text = "Sửa chi tiết hóa đơn";
         }
@@ -287,7 +294,8 @@ namespace QL_ban_tinh_dau
 
         private void btninHD_Click(object sender, EventArgs e)
         {
-
+            InHoaDonForm fPrint = new InHoaDonForm(selectedHoaDonId);
+            fPrint.ShowDialog();;
         }
 
         private void btnTimKiem_Click(object sender, EventArgs e)

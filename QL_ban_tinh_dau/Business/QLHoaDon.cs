@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QL_ban_tinh_dau.Model;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -12,6 +13,62 @@ namespace QL_ban_tinh_dau.Business
 {
     public class QLHoaDon
     {
+        public static HoaDon GetById(int Id)
+        {
+            DbConnection conObject = DataBaseConnection.GetDatabaseConnection();
+            HoaDon hoaDon = null;
+
+            try
+            {
+                conObject.Open();
+                if (conObject.State == ConnectionState.Open)
+                {
+                    //Response.Write("Database Connection is Open");
+
+                    using (var cmd = conObject.CreateCommand())
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.CommandText = "GetHD";
+
+                        cmd.Parameters.Add(new SqlParameter("@idHoadon", SqlDbType.Int));
+                        cmd.Parameters["@idHoadon"].Value = Id;
+
+                        var rd = cmd.ExecuteReader();
+
+                        if (rd.Read())
+                        {
+                            hoaDon = new HoaDon()
+                            {
+                                Id = int.Parse(rd["idHoadon"].ToString()),
+                                NhanVienId = int.Parse(rd["id_NV"].ToString()),
+                                KhachHangId = int.Parse(rd["id_KH"].ToString()),
+                                TenNhanVien = rd["tenNV"].ToString(),
+                                TenKhachHang = rd["tenKH"].ToString(),
+                            };
+
+                        }
+
+                        return hoaDon;
+                    }
+
+                }
+
+            }
+            catch (SqlException sqlexception)
+            {
+                return hoaDon;
+            }
+            catch (Exception ex)
+            {
+                return hoaDon;
+            }
+            finally
+            {
+                conObject.Close();
+            }
+            return hoaDon;
+        }
+
         public static int GetNewHoaDonId()
         {
             DbConnection conObject = DataBaseConnection.GetDatabaseConnection();

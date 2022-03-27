@@ -77,13 +77,20 @@ namespace QL_ban_tinh_dau
                         DataSet ds = new DataSet();
                         da.SelectCommand = cmd;
                         da.Fill(ds);
-                        foreach (DataRow dr in ds.Tables[0].Rows)
-                        {
-                            getImg = (byte[])dr["hinhanh"];
+
+                        foreach (DataRow dr in ds.Tables[0].Rows)               
+                        {   
+                            if(dr["hinhanh"] != null && dr["hinhanh"] != System.DBNull.Value)
+                                getImg = (byte[])dr["hinhanh"];
                         }
+
                         byte[] imgData = getImg;
-                        MemoryStream stream = new MemoryStream(imgData);
-                        picBox.Image = Image.FromStream(stream);
+                        if(getImg.Length > 0)
+                        {
+                            MemoryStream stream = new MemoryStream(imgData);
+                            picBox.Image = Image.FromStream(stream);
+                        }
+                        
                         conn.Close();
                     }
                 }

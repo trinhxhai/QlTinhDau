@@ -12,6 +12,62 @@ namespace QL_ban_tinh_dau.Business
 {
     public class QLChiTietHoaDon
     {
+        public static List<CTHD> GetList(int HoaDonId)
+        {
+            DbConnection conObject = DataBaseConnection.GetDatabaseConnection();
+            List<CTHD> result = new List<CTHD>();
+            try
+            {
+                conObject.Open();
+                if (conObject.State == ConnectionState.Open)
+                {
+                    //Response.Write("Database Connection is Open");
+
+                    using (var cmd = conObject.CreateCommand())
+                    {
+                        cmd.CommandType = CommandType.Text;
+                        cmd.CommandText = "select * from v_CTHD where idHoadon = '" + HoaDonId + "' ";
+
+                        DbDataReader dataReader = cmd.ExecuteReader();
+                        if (dataReader.HasRows)
+                        {
+                            while (dataReader.Read())
+                            {
+
+                                result.Add(new CTHD
+                                {
+                                    HoaDonId = HoaDonId,
+                                    SanPhamId = int.Parse(dataReader["idSanpham"].ToString()),
+                                    TenSanPham = dataReader["tenSanpham"].ToString(),
+                                    SoLuong = float.Parse(dataReader["fSoluongmua"].ToString()),
+                                    GiaBan = float.Parse(dataReader["fGiaban"].ToString()),
+                                    KhuyenMai = float.Parse(dataReader["fKhuyenmai"].ToString()),
+                                    ThanhTien = float.Parse(dataReader["fthanhTien"].ToString()),
+                                });
+                            }
+
+                        }
+                        return result;
+                    }
+
+                }
+
+            }
+            catch (SqlException sqlexception)
+            {
+                return null;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+            finally
+            {
+                conObject.Close();
+            }
+            return null;
+        }
+
         public static int Add(CTHD cthd)
         {
             DbConnection conObject = DataBaseConnection.GetDatabaseConnection();

@@ -14,6 +14,6 @@ namespace QL_ban_tinh_dau.Model
         public double KhuyenMai { get; set; }
         public double ThanhTien { get; set; }
         public string TenSanPham { get; set; }
-        public int GiaBan { get; set; }
+        public double GiaBan { get; set; }
     }
 }

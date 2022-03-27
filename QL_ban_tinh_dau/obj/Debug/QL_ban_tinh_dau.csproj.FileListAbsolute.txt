@@ -25,7 +25,6 @@ C:\Users\trinh\Desktop\programming\BT Chi Mai 2\QlTinhDau\QL_ban_tinh_dau\bin\De
 C:\Users\trinh\Desktop\programming\BT Chi Mai 2\QlTinhDau\QL_ban_tinh_dau\bin\Debug\System.ValueTuple.dll
 C:\Users\trinh\Desktop\programming\BT Chi Mai 2\QlTinhDau\QL_ban_tinh_dau\bin\Debug\System.ValueTuple.xml
 C:\Users\trinh\Desktop\programming\BT Chi Mai 2\QlTinhDau\QL_ban_tinh_dau\obj\Debug\QL_ban_tinh_dau.csproj.AssemblyReference.cache
-C:\Users\trinh\Desktop\programming\BT Chi Mai 2\QlTinhDau\QL_ban_tinh_dau\obj\Debug\QL_ban_tinh_dau.BCThongKeForm.resources
 C:\Users\trinh\Desktop\programming\BT Chi Mai 2\QlTinhDau\QL_ban_tinh_dau\obj\Debug\QL_ban_tinh_dau.ChiTietHoaDonForm.resources
 C:\Users\trinh\Desktop\programming\BT Chi Mai 2\QlTinhDau\QL_ban_tinh_dau\obj\Debug\QL_ban_tinh_dau.Login.resources
 C:\Users\trinh\Desktop\programming\BT Chi Mai 2\QlTinhDau\QL_ban_tinh_dau\obj\Debug\QL_ban_tinh_dau.MainForm.resources
@@ -60,3 +59,5 @@ C:\Users\trinh\Desktop\programming\BT Chi Mai 2\QlTinhDau\QL_ban_tinh_dau\bin\De
 C:\Users\trinh\Desktop\programming\BT Chi Mai 2\QlTinhDau\QL_ban_tinh_dau\bin\Debug\CrystalDecisions.Windows.Forms.dll
 C:\Users\trinh\Desktop\programming\BT Chi Mai 2\QlTinhDau\QL_ban_tinh_dau\bin\Debug\ShockwaveFlashObjects.dll
 C:\Users\trinh\Desktop\programming\BT Chi Mai 2\QlTinhDau\QL_ban_tinh_dau\obj\Debug\QL_ban_tinh_dau.InHoaDonForm.resources
+C:\Users\trinh\Desktop\programming\BT Chi Mai 2\QlTinhDau\QL_ban_tinh_dau\obj\Debug\QL_ban_tinh_dau.BCTKForm.resources
+C:\Users\trinh\Desktop\programming\BT Chi Mai 2\QlTinhDau\QL_ban_tinh_dau\obj\Debug\QL_ban_tinh_dau.PrintReportForm.resources

@@ -108,6 +108,7 @@
             this.btnBCTK.TabIndex = 7;
             this.btnBCTK.Text = "Báo cáo thống kê";
             this.btnBCTK.UseVisualStyleBackColor = false;
+            this.btnBCTK.Click += new System.EventHandler(this.btnBCTK_Click);
             // 
             // btnDangxuat
             // 

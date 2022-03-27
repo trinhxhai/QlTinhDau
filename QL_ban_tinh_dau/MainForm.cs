@@ -99,5 +99,17 @@ namespace QL_ban_tinh_dau
         {
 
         }
+
+        private void btnBCTK_Click(object sender, EventArgs e)
+        {
+
+            BCTKForm qlHDform = new BCTKForm();
+            this.Hide();
+
+            qlHDform.FormClosed += CloseMain;
+            NeedToClose = true;
+            qlHDform.ShowDialog();
+
+        }
     }
 }

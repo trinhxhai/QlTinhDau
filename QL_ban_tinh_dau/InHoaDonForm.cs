@@ -42,6 +42,9 @@ namespace QL_ban_tinh_dau
 
         }
 
-        
+        private void InHoaDonForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

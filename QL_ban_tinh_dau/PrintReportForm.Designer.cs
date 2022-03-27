@@ -1,7 +1,7 @@
 ﻿
 namespace QL_ban_tinh_dau
 {
-    partial class InHoaDonForm
+    partial class PrintReportForm
     {
         /// <summary>
         /// Required designer variable.
@@ -30,7 +30,10 @@ namespace QL_ban_tinh_dau
         private void InitializeComponent()
         {
             this.crystalReportViewer = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
-            this.rptHoaDon1 = new QL_ban_tinh_dau.rpt.rptHoaDon();
+            this.rptSanPham = new QL_ban_tinh_dau.rpt.rptSanPham();
+            this.rptLoaiSanPham = new QL_ban_tinh_dau.rpt.rptLoaiSanPham();
+            this.rptNhanVien = new QL_ban_tinh_dau.rpt.rptNhanVien();
+            this.rptKhachHang = new QL_ban_tinh_dau.rpt.rptKhachHang();
             this.SuspendLayout();
             // 
             // crystalReportViewer
@@ -43,17 +46,16 @@ namespace QL_ban_tinh_dau
             this.crystalReportViewer.Name = "crystalReportViewer";
             this.crystalReportViewer.Size = new System.Drawing.Size(800, 450);
             this.crystalReportViewer.TabIndex = 0;
-            this.crystalReportViewer.Load += new System.EventHandler(this.crystalReportViewer1_Load);
             // 
-            // InHoaDonForm
+            // PrintReportForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.crystalReportViewer);
-            this.Name = "InHoaDonForm";
-            this.Text = "InHoaDonForm";
-            this.Load += new System.EventHandler(this.InHoaDonForm_Load);
+            this.Name = "PrintReportForm";
+            this.Text = "PrintReportForm";
+            this.Load += new System.EventHandler(this.PrintReportForm_Load);
             this.ResumeLayout(false);
 
         }
@@ -61,6 +63,9 @@ namespace QL_ban_tinh_dau
         #endregion
 
         private CrystalDecisions.Windows.Forms.CrystalReportViewer crystalReportViewer;
-        private rpt.rptHoaDon rptHoaDon1;
+        private rpt.rptSanPham rptSanPham;
+        private rpt.rptLoaiSanPham rptLoaiSanPham;
+        private rpt.rptNhanVien rptNhanVien;
+        private rpt.rptKhachHang rptKhachHang;
     }
 }

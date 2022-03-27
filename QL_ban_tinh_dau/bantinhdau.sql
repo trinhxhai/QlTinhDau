@@ -407,3 +407,64 @@ end
 
 go
 
+create Proc BCTK_SanPham
+	@From date, @To date
+as
+	select tbl_Sanpham.idSanpham,tbl_Sanpham.tenSanpham,tbl_Sanpham.fGiaban, tbl_Sanpham.iSoluongdaban, ISNULL(SUM(tbl_CTHD.fSoluongmua),0) as TongSoluongmua,ISNULL(SUM(tbl_CTHD.fthanhTien),0) as TongThanhTien from tbl_CTHD
+	
+	inner join (select * from tbl_hoadon 	
+				where 
+				@From <= tbl_hoadon.dThoigiantao and tbl_hoadon.dThoigiantao <=  @To) filtered_hd 
+		on tbl_CTHD.idHoadon = filtered_hd.idHoadon
+
+	right join tbl_Sanpham on tbl_CTHD.idSanpham = tbl_Sanpham.idSanpham
+
+	group by tbl_Sanpham.idSanpham, tbl_Sanpham.tenSanpham, tbl_Sanpham.fGiaban, tbl_Sanpham.iSoluongdaban
+go
+ 
+
+create Proc BCTK_LoaiSanPham
+	@From date, @To date
+as
+	select tbl_loaisanpham.idLoaisanpham,tbl_loaisanpham.tenLoaisanpham , ISNULL(SUM(tbl_CTHD.fSoluongmua),0) as TongSoluongmua,ISNULL(SUM(tbl_CTHD.fthanhTien),0) as TongThanhTien from tbl_CTHD
+	inner join tbl_Sanpham on tbl_CTHD.idSanpham = tbl_Sanpham.idSanpham
+	inner join (select * from tbl_hoadon 	
+				where 
+				@From <= tbl_hoadon.dThoigiantao and tbl_hoadon.dThoigiantao <=  @To) filtered_hd 
+		on tbl_CTHD.idHoadon = filtered_hd.idHoadon
+	right join tbl_loaisanpham on tbl_Sanpham.idLoaisanpham = tbl_loaisanpham.idLoaisanpham
+
+
+	group by tbl_loaisanpham.idLoaisanpham, tbl_loaisanpham.tenLoaisanpham
+go
+
+
+create Proc BCTK_KhachHang
+	@From date, @To date
+as
+	select tbl_khachhang.id_KH,tbl_khachhang.tenKH, ISNULL(SUM(tbl_CTHD.fSoluongmua),0) as TongSoluongmua,ISNULL(SUM(tbl_CTHD.fthanhTien),0) as TongThanhTien from tbl_CTHD
+	inner join (select * from tbl_hoadon 	
+				where 
+				@From <= tbl_hoadon.dThoigiantao and tbl_hoadon.dThoigiantao <=  @To) filtered_hd 
+		on tbl_CTHD.idHoadon = filtered_hd.idHoadon
+	right join tbl_khachhang on tbl_khachhang.id_KH = filtered_hd.id_KH
+
+	group by tbl_khachhang.id_KH, tbl_khachhang.tenKH
+go
+
+
+create Proc BCTK_NhanVien
+	@From date, @To date
+as
+	select tbl_nhanvien.id_NV,tbl_nhanvien.tenNV,tbl_nhanvien.tenTaiKhoanNV, ISNULL(SUM(tbl_CTHD.fSoluongmua),0) as TongSoluongmua,ISNULL(SUM(tbl_CTHD.fthanhTien),0) as TongThanhTien from tbl_CTHD
+	inner join (select * from tbl_hoadon 	
+				where 
+				@From <= tbl_hoadon.dThoigiantao and tbl_hoadon.dThoigiantao <=  @To) filtered_hd 
+		on tbl_CTHD.idHoadon = filtered_hd.idHoadon
+	right join tbl_nhanvien on tbl_nhanvien.id_NV = filtered_hd.id_NV
+
+	group by tbl_nhanvien.id_NV, tbl_nhanvien.tenNV, tbl_nhanvien.tenTaiKhoanNV
+go
+
+
+exec BCTK_SanPham '2022-03-22', '2022-03-22'
